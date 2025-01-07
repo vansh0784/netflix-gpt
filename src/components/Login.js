@@ -1,6 +1,14 @@
-import React from 'react'
+import React, { useState,useRef } from 'react'
 import Header from './Header'
+import { isValidDetail } from '../utils/validate';
 const Login = () => {
+  const [errorMessage,setErrorMessage]=useState(null);
+  const email=useRef();
+  const password=useRef();
+  const handleOnClick=()=>{
+    const message=isValidDetail(email?.current?.value,password?.current.value);
+    setErrorMessage(message);
+  }
   return (
     <div className='relative'>
       <img className="absolute w-full h-auto object-cover "
@@ -13,10 +21,11 @@ const Login = () => {
         <form onSubmit={(e)=>{e.preventDefault()}}
           className='text-center text-white'>
             <h1 className='text-left py-4 font-bold text-3xl my-4'>Sign In</h1>
-            <input className='outline-none px-3 py-3 my-2 mx-auto border opacity-50 rounded-sm bg-slate-900 w-full'
+            <input ref={email} className='outline-none px-3 py-3 my-2 mx-auto border opacity-50 rounded-sm bg-slate-900 w-full'
              type="text" placeholder='Email or phone number' />
-            <input className='outline-none px-3 py-3 my-2 mx-auto border opacity-50 rounded-sm bg-slate-900 w-full' type="password" placeholder='Password'/>
-            <button className='bg-red-600 my-3 px-3 rounded-sm py-3 text-center w-full'>Sign In</button>
+            <input ref={password} className='outline-none px-3 py-3 my-2 mx-auto border opacity-50 rounded-sm bg-slate-900 w-full' type="password" placeholder='Password'/>
+            <p className='font-semibold text-red-600 text-left'>{errorMessage}</p>
+            <button className='bg-red-600 my-3 px-3 rounded-sm py-3 text-center w-full' onClick={handleOnClick}>Sign In</button>
             <h3>OR</h3>
             <button className='bg-gray-600 rounded-sm my-3 px-3 py-3 text-center w-full'>Use a sign-in code</button>
             <a href="/forgotPassword" className='my-3 px-2 py-1' >Forgot password?</a>
