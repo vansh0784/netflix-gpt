@@ -1,12 +1,12 @@
 import React, { useState,useRef } from 'react'
 import Header from './Header'
-import { isValidDetail } from '../utils/validate';
+import { isValidDetailSignIn } from '../utils/validate';
 const Login = () => {
   const [errorMessage,setErrorMessage]=useState(null);
   const email=useRef();
   const password=useRef();
   const handleOnClick=()=>{
-    const message=isValidDetail(email?.current?.value,password?.current.value);
+    const message=isValidDetailSignIn(email?.current?.value,password?.current.value);
     setErrorMessage(message);
   }
   return (

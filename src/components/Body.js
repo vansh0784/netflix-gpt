@@ -2,6 +2,7 @@ import React from 'react';
 import Login from './Login';
 import Signup from './Signup';
 import Browse from './Browse';
+import AccountCreate from './AccountCreate';
 import { createBrowserRouter,RouterProvider } from 'react-router-dom';
 
 const Body = () => {
@@ -17,6 +18,10 @@ const Body = () => {
         {
           path:"/signup",
           element:<Signup/>
+        },
+        {
+          path:"/AccountCreate",
+          element:<AccountCreate/>
         }
       ])
   return (

@@ -29,13 +29,19 @@ const Signup = () => {
           Ready to watch? Enter your email to create or restart your membership.
         </h2>
         <div className="flex items-center justify-center">
+          {/* <form className="bg-black w-3/12">
+            <p className="text-white font-bold text-xl text-left px-3 py-4">Signup</p>
+            <input type="text" className="w-full px-3 py-2 my-2" />
+          </form> */}
           <input
             type="email"
             placeholder="Email address"
             className="outline-none px-6 py-3 my-2 bg-slate-900 w-1/4 bg-opacity-80 border rounded-md "
           ></input>
           <button className="bg-red-600 px-6 py-3 font-semibold rounded-md my-2 mx-2 text-white">
+            <a href="/AccountCreate">
             Get Started {">"}
+            </a>
           </button>
         </div>
       </div>
