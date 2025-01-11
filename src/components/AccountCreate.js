@@ -1,8 +1,17 @@
 import React, { useRef, useState } from "react";
 import { isValidDetailSignUp } from "../utils/validate";
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth";
+import { getDatabase,set,ref } from "firebase/database";
 import { app } from "../utils/firebase";
+const db=getDatabase(app);
 const AccountCreate = () => {
+  const putData=()=>{
+    set(ref(db,"users/netflix-gpt"),{
+      id:1,
+      name:"Vansh",
+      age:"21",
+    })
+  }
   const [message, setMessage] = useState([]);
   const userName = useRef();
   const email = useRef();
@@ -99,12 +108,14 @@ const AccountCreate = () => {
         {/* <p className='text-white font-bold text-left text-xl my-2 '>Enter Following Details</p>
                 <input type="text" className='px-3 py-2 w-full my-3' placeholder='Enter your name' />
                 <input type="text" className='px-3 py-2 w-full my-3' placeholder='Enter your name' /> */}
+                <button className="text-red-600" onClick={putData}>Put Data</button>
       </form>
       <button className="my-10">
         <a href="/" className="text-black text-right px-8 py-2 font-bold">
           Sign In
         </a>
       </button>
+
     </div>
   );
 };
